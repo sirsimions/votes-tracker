@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    require 'jwt'
+    wrap_parameters format: []
     def create
         user = User.new(user_params)
     
@@ -36,6 +38,6 @@ class UsersController < ApplicationController
       private
     
       def user_params
-        params.permit(:firstname, :lastname, :mobNo, :password, :password_confirmation)
+        params.permit(:firstname, :lastname, :mobno, :password, :role, :password_confirmation)
       end
 end

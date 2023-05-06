@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
+    wrap_parameters format: []
     def create
-        user = User.find_by_mobNo(session_params[:mobNo])
+        user = User.find_by_mobno(session_params[:mobno])
 
         if user && user.authenticate(session_params[:password])
             token = issue_token(user)
@@ -20,6 +21,6 @@ class SessionsController < ApplicationController
 
     private
     def session_params
-        params.permit(:mobNo, :password)
+        params.permit(:mobno, :password)
     end
 end
