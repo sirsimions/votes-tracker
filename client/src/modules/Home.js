@@ -21,10 +21,10 @@ function Home({ data }) {
 
             <div className='crd'>
             <Card >
-                <Card.Header as="h5">Live</Card.Header>
+                <div className='live'><Card.Header as="h5">Live</Card.Header></div>
                 <Card.Body>
-                    <Card.Title>Counted Number of votes</Card.Title>
-                   <div className='tot'>{sum}</div> 
+                   <div className='totit'><Card.Title>Counted Number of votes</Card.Title></div> 
+                   <div className='tot'>Total: {sum}</div> 
                     
                 </Card.Body>
             </Card>

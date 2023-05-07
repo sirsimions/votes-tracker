@@ -76,10 +76,10 @@ function Signup( {user, onSignup} ){
                                         <input value={passwordConfirmation} onChange={(e)=>setPasswordConfirmation(e.target.value)} type="password" class="form-control" placeholder="Confirm your password" />
                                     </div>
                                     
-                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                    {/* <div class="d-flex flex-row align-items-center justify-content-between" >
                                         <small>Already registered?</small>
                                         <a href='/logins'>Login</a>
-                                    </div>
+                                    </div> */}
                                     <button class="btn btn-primary" disabled={isLoading}>Signup</button>
                                 </form>
                             </div>

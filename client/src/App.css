@@ -42,17 +42,60 @@
   top: 38%;
   left: 30%;
   width: 44%;
+
+  /* background: #39ff14; */
+  box-shadow: 0 0 50px #39ff14;
 }
 
 .tot{
   position: relative;
   font-size: xx-large;
-  left: 44%;
-
+  left: 40%;
 }
 .welcome{
   position: absolute;
   color: white;
   left: 55%;
   top: 3%;
+}
+
+a {
+  padding: 20px 20px;
+  display: inline-block;
+  color: #008000;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 3em;
+  overflow: hidden;
+}
+
+/*creating animation effect*/
+a:hover {
+  color: #111;
+  background: #39ff14;
+  box-shadow: 0 0 50px #39ff14;
+  
+}
+
+.totit {
+
+  position: relative;
+  font-size: xx-large;
+  left: 30%;
+
+  margin: 2% auto;
+  animation: play 10s steps(1) infinite;
+}
+
+.live{
+  animation: play 1s steps(1) infinite;
+}
+
+@keyframes play {
+    100% { background-position: -1900px; }
+
+    0% { transform: scale(1); }
+    50% { transform: scale(0); }
+    100% { transform: scale(1); }
 }
