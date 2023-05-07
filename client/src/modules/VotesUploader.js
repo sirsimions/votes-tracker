@@ -3,12 +3,14 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css'
 
-function VotesUploader() {
+function VotesUploader( {user} ) {
     const [county, setCounty] = useState('')
     const [pollingStation, setPollingStation] = useState('')
     const [votes, setVotes] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
-    function handleSubmit() {
+    function handleSubmit(e) {
+        setIsLoading(true)
         fetch('/poll', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -21,7 +23,9 @@ function VotesUploader() {
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
+            setIsLoading(true)
         })
+        
     }
     return (
 
@@ -42,7 +46,7 @@ function VotesUploader() {
                                     <div class="form-group">
                                         <input value={votes} onChange={(e)=>setVotes(e.target.value)} type="number" class="form-control" placeholder="Number of votes" />
                                     </div>
-                                    <button class="btn btn-primary" >Upload</button>
+                                    <button class="btn btn-primary" disabled={isLoading}>Upload</button>
                                 </form>
                             </div>
                         </div>

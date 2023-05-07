@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Signup(){
+function Signup( {user, onSignup} ){
 
     const [firstname, setFirstname]=useState('')
     const [lastname, setLastname]=useState('')
@@ -10,6 +11,7 @@ function Signup(){
     const [password, setPassword]=useState('')
     const[passwordConfirmation, setPasswordConfirmation]=useState('')
     const [isLoading, setIsLoading] = useState(false)
+    
 
     function handleRole(e){
         setRole(e.target.value)
@@ -33,10 +35,10 @@ function Signup(){
         }).then(res=>res.json())
         .then(data=>{
             console.log(data)
-            // onSignup()
+            onSignup()
             setIsLoading(false)
         })
-
+        window.alert('Account created successfully')
     }
     return (
         <>
@@ -57,14 +59,17 @@ function Signup(){
                                     <div class="form-group">
                                         <input value={mobno} onChange={(e)=>setmobno(e.target.value)} type="number" class="form-control"  placeholder="Mobile number" />
                                     </div>
-                                    <label class="form-group">
+                                    <div class="form-group">
+                                        <input value={role} onChange={(e)=>setRole(e.target.value)} type="text" class="form-control"  placeholder="Role" />
+                                    </div>
+                                    {/* <label class="form-group">
                                         Signup as
                                         <select onChange={handleRole}  className='form-select' >
                                         
                                          <option value='agent'>agent</option>
                                          <option value='user'>user</option>
                                         </select>
-                                    </label>
+                                    </label> */}
                                         <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" class="form-control" placeholder="Password" />
                                     </div>
                                     <div class="form-group">

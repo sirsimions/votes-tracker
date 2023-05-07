@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-function Login() {
+function Login( {onLogin, setUser, setRole} ) {
 
     const [mobno, setMobno] = useState('')
     const [password, setPassword] = useState('')
@@ -23,9 +23,9 @@ function Login() {
         }).then((res) => res.json()).then((data) => {
             localStorage.setItem("user", JSON.stringify(data.user))
             localStorage.setItem("token", data.jwt)
-            // setUser(data.user)
-            // setRole(data.user.role)
-            // onLogin()
+            setUser(data.user)
+            setRole(data.user.role)
+            onLogin()
             setIsLoading(false)
             
 

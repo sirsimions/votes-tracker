@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  wrap_parameters format: []
     def index
         requested_units=Vote.all
         render json: requested_units
