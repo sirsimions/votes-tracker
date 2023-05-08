@@ -7,6 +7,7 @@ import Login from './modules/Login';
 import VotesUploader from './modules/VotesUploader';
 import Navbar from './modules/Navbar';
 import { useNavigate } from 'react-router-dom';
+import ControlPanel from './modules/ControlPanel';
 
 function App() {
   const [user, setUser] = useState()
@@ -41,6 +42,7 @@ function App() {
       <Navbar user= {user} role = {role}/>
       <Routes>
         <Route exact path='/' element={<Home data= {data} user= {user} />} />
+        <Route exact path='/controlpanel' element={<ControlPanel data= {data} user= {user} />} />
         <Route exact path='/signup' element={<Signup onSignup={onSignup} user= {user} />} />
         <Route exact path='/login' element={<Login  onLogin={onLogin} user= {user} setUser= {setUser} setRole = {setRole}/>} />
         <Route exact path='/uploader' element={<VotesUploader user= {user} />} />

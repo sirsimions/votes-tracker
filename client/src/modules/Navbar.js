@@ -20,6 +20,18 @@ function Navbar( {user, role} ) {
         );
     }
 
+    else if(user && role ==='secretagent') {
+        return (
+            <>
+                <div className='navhd' >
+                    <div className='navItm'><Nav.Link as={Link} to='/controlpanel' >Control Panel</Nav.Link></div>
+                    <p className='welcome'>Hi {user.firstname}, welcome!</p>
+                    {/* <div className='navItm'><Nav.Link as={Link} to='/uploader' >Votes Capture</Nav.Link></div> */}
+                </div>
+            </>
+        );
+    }
+
     else if(user) {
         return (
             <>

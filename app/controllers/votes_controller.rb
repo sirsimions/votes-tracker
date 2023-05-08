@@ -1,33 +1,46 @@
 class VotesController < ApplicationController
   wrap_parameters format: []
     def index
-        requested_units=Vote.all
-        render json: requested_units
+        votes=Vote.all
+        render json: votes
       end
       def show
-        requested_unit = Vote.find_by(id:params[:id])
-        render json: requested_unit
+        vote = Vote.find_by(id:params[:id])
+        render json: vote
       end
+      # def destroy
+      #   @vote=Vote.find_by(id:params[:id])
+      #   @vote.destroy
+      #   head :no_content
+      # end
+
       def destroy
-        requested_unit=Vote.find_by(id:params[:id])
-        requested_unit.destroy
-        head :no_content
-      end
+        @vote = Vote.find(params[:id])
+        if @vote.present?
+          @vote.destroy
+          head :no_content
+          render json: {}
+          return redirect_to (votes_path)
+        end
+        
+    end
+    
+
       def create
-        requested_unit=Vote.create!(request_unit_params)
-        render json: requested_unit,status: :created
+        vote=Vote.create!(vote_params)
+        render json: vote,status: :created
       end
       def update
-        requested_unit = Vote.find_by(id: params[:id])
-          if requested_unit
-            requested_unit.update(request_unit_params)
-            render json: requested_unit,status: :created
+        vote = Vote.find_by(id: params[:id])
+          if vote
+            vote.update(vote_params)
+            render json: vote,status: :created
           else
             render json: { error: "Vote not found"}, status: :not_found
           end
        end
       private
-      def request_unit_params
+      def vote_params
         params.permit(:county,:pollingStation,:votes)
       end
 end
